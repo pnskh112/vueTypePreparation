@@ -1,0 +1,12 @@
+version: "3"
+services:
+  app:
+    build: .
+    tty: true
+    volumes:
+      - ./frontend:/frontend
+      - .bash_history:/home/node/.bash_history
+    ports:
+      - "3000:8080"
+    user: node
+    command: sh -c "cd app && yarn serve"
