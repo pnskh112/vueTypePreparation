@@ -1,9 +1,9 @@
 import express from 'express';
 
-const app = express();
+const index = express();
 
-app.get('/', (_, res) => {
+index.get('/', (_, res) => {
   res.send('Hello world');
 });
 
-app.listen(3000, () => console.log('Server is running'));
+index.listen(3000, () => console.log('Server is running'));
