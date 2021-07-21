@@ -16,8 +16,13 @@
     <br><br> -->
     <button @click="createComment">コメントをサーバに送る</button>
     <h2>掲示板</h2>
-    <div v-for="post in posts" :key="post">
-      <div>名前：{{ post }}</div>
+    <div v-for="(post,key,index) of posts" :key="post">
+      <button @click="ok = !ok">名前表示ボタン</button>
+      <div v-show="ok">
+        <div>index：{{index}}</div>
+        <div>キー名：{{key}}</div>
+        <div>名前：{{ post }}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -28,7 +33,8 @@ export default {
   data() {
     return {
       test: "",
-      posts: []
+      posts: [],
+      ok: true
     };
   },
   created() {
