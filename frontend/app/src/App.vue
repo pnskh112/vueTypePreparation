@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <like-header></like-header>
+    <LikeNumber></LikeNumber>
     <h3>投稿する</h3>
     <label for="test">テスト</label>
     <input 
@@ -8,26 +10,22 @@
       v-model="test"
     >
     <br><br>
-    <!-- <label for="comment">コメント</label>
-    <textarea 
-      id="comment" 
-      v-model="comment"
-    ></textarea>
-    <br><br> -->
+
     <button @click="createComment">コメントをサーバに送る</button>
     <h2>掲示板</h2>
     <div v-for="(post,key,index) of posts" :key="post">
       <button @click="ok = !ok">名前表示ボタン</button>
-      <div v-show="ok">
+      <template v-if="ok">
         <div>index：{{index}}</div>
         <div>キー名：{{key}}</div>
         <div>名前：{{ post }}</div>
-      </div>
+      </template>
     </div>
   </div>
 </template>
 
 <script>
+import LikeHeader from "./components/LikeHeader.vue";
 import axios from "axios";
 export default {
   data() {
@@ -67,17 +65,17 @@ export default {
       console.log("hello");
       this.test = "";
     }
-  }
+  },
+  components: {
+    LikeHeader,
+  },
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+  
+  div {
+    border: 1px solid blue;
+  }
+  
 </style>
