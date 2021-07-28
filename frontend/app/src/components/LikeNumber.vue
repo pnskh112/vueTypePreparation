@@ -1,29 +1,28 @@
 <template>
   <div>
-    <p>いいね{{ number }}</p>
+    <p>いいね{{ halfNumber }}</p>
     <button @click="increment()">+1</button>
   </div>
 </template>
 
 <script lang="ts">
 export default {
-  data: function() {
-    return {
-      number: 5
-    };
+
+  // data() {
+  //   return {
+  //     number: 5,
+  //   };
+  // },
+  props: ["totalNumber"],
+  computed: {
+    halfNumber():number {
+      return this.totalNumber / 2;
+    }
   },
   methods: {
-    increment() {
-      this.number += 1;
+    increment():void {
+      this.$emit("my-click", this.totalNumber + 1);
     }
   }
 };
 </script>
-
-<style scoped>
-  
-  div {
-    border: 1px solid red;
-  }
-  
-</style>
