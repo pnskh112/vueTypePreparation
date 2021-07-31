@@ -14,12 +14,10 @@ export default {
   //   };
   // },
   props: ["totalNumber"],
-  computed: {
+  methods: {
     halfNumber():number {
       return this.totalNumber / 2;
-    }
-  },
-  methods: {
+    },
     increment():void {
       this.$emit("my-click", this.totalNumber + 1);
     }
