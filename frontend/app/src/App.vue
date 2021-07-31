@@ -1,6 +1,17 @@
 <template>
-  <div id="app">
-    <LikeHeader>
+  <div id="app" style="width: 700px; margin: auto; padding-top: 50px;">
+
+    <ViewsHome></ViewsHome>
+    <router-view name="header"></router-view>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
+    <router-view></router-view>
+    <div style="height: 700px;"></div>
+
+
+
+     <LikeHeader>
         <h3>初めまして</h3>
     </LikeHeader>
     <LikeNumber :total-number="number" @my-click="incrementNumber"></LikeNumber>
@@ -128,6 +139,7 @@ import LikeHeader from "./components/LikeHeader.vue";
 import About from "./components/About.vue"
 import Home from "./components/Home.vue"
 import EventTitle from "./components/EventTitle.vue"
+import ViewsHome from "./views/Home.vue";
 import axios from "axios";
 export default {
   data() {
@@ -189,6 +201,18 @@ export default {
     About,
     Home,
     EventTitle,
+    ViewsHome
   }
 }
 </script>
+
+<style scoped>
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+</style>
